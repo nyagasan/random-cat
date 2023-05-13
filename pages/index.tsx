@@ -8,13 +8,6 @@ type Props = {
 const IndexPage: NextPage<Props> = ({initialImageUrl}) => {
     const [ imageUrl, setImageUrl ] = useState(initialImageUrl);
     const [loading, setLoading ] = useState(false);
-
-    // useEffect(() => {
-    //     fetchImage().then((newImage) => {
-    //         setImageUrl(newImage.url);
-    //         setLoading(false);
-    //     });
-    // },[]);
     const handleClick = async () => {
         setLoading(true);
         const newImage = await fetchImage();
@@ -23,8 +16,20 @@ const IndexPage: NextPage<Props> = ({initialImageUrl}) => {
     };
     return (
     <div className={styles.page}>
-        <button onClick={handleClick} className={styles.button}>
+        {/* <button onClick={handleClick} className={styles.button}>
             他のニャンコも見る
+        </button> */}
+        <button
+        onClick={handleClick}
+        style={{
+          backgroundColor: "#319795",
+          border: "none",
+          borderRadius: "4px",
+          color: "white",
+          padding: "4px 8px",
+        }}
+        >
+        きょうのにゃんこ🐱
         </button>
         <div className={styles.frame}>
             {loading || <img src={imageUrl} className={styles.img}/>}</div>
